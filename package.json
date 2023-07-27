@@ -7,7 +7,7 @@
   "main": "./dist/electron/main.js",
   "scripts": {
     "build:mac": "node .electron-vue/build.js && electron-builder --mac",
-    "build:win": "node .electron-vue/build.js && electron-builder --win --x64",
+    "build:win": "set NODE_OPTIONS=--openssl-legacy-provider && node .electron-vue/build.js && electron-builder --win --x64",
     "build:dir": "node .electron-vue/build.js && electron-builder --dir",
     "build:clean": "cross-env BUILD_TARGET=clean node .electron-vue/build.js",
     "build:web": "cross-env BUILD_TARGET=web node .electron-vue/build.js",
@@ -42,21 +42,11 @@
       ]
     },
     "win": {
-      "target": [
-        "nsis"
-      ],
-      "icon": "build/icons/icon.ico"
+      "target": "nsis",
+      "icon": "./resources/installer/Icon.ico"
     },
     "nsis": {
-      "oneClick": false,
-      "allowToChangeInstallationDirectory": false,
-      "createDesktopShortcut": true,
-      "perMachine": true,
-      "language": 1042,
-      "installerIcon": "build/icons/icon.ico",
-      "shortcutName": "NB",
-      "artifactName": "NB-${version}.${ext}",
-      "uninstallDisplayName": "NB"
+      "oneClick": true
     },
     "mac": {
       "target": "pkg",
@@ -93,7 +83,7 @@
     "del": "^3.0.0",
     "devtron": "^1.4.0",
     "electron": "^11.0.0",
-    "electron-builder": "^21.2.0",
+    "electron-builder": "^22.1.0",
     "electron-debug": "^1.5.0",
     "electron-devtools-installer": "^3.2.0",
     "file-loader": "^1.1.11",
