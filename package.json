@@ -8,7 +8,7 @@
   "scripts": {
     "build": "vue-cli-service electron:build --windows",
     "build:mac": "node .electron-vue/build.js && electron-builder --mac",
-    "build:win": "node .electron-vue/build.js && electron-builder --win nsis --x64",
+    "build:win": "set NODE_OPTIONS=--openssl-legacy-provider && node .electron-vue/build.js && electron-builder --win nsis --x64",
     "build:dir": "node .electron-vue/build.js && electron-builder --dir",
     "build:clean": "cross-env BUILD_TARGET=clean node .electron-vue/build.js",
     "build:web": "cross-env BUILD_TARGET=web node .electron-vue/build.js",
@@ -19,7 +19,7 @@
     "postinstall": ""
   },
   "build": {
-    "productName": "uimd",
+    "productName": "uimd_assignment",
     "appId": "com.example.yourapp",
     "directories": {
       "output": "build"
